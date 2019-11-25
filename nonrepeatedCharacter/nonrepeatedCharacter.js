@@ -16,17 +16,18 @@
 var firstNonRepeatedCharacter = function( string ) {
   // TODO: your solution here
   var count = 0
-  	
-  for ( var i = 0; i < string.length; i++ ) {
-  	for ( var j = 0; j < 	string.length; j++ ) {
+  	var string1 =string.toUpperCase()
+  	console.log(x)
+  for ( var i = 0; i < string1.length; i++ ) {
+  	for ( var j = 0; j < 	string1.length; j++ ) {
 
-  			if( string[j] === string[i] ) {
+  			if( string1[j] === string1[i] ) {
   				count++
 
   			}
   	}
   	if( count === 1 ) {
-  		return string[i]
+  		return string1[i]
   	}
   	count = 0
   }
@@ -39,8 +40,9 @@ var firstNonRepeatedCharacter = function( string ) {
 var firstNonRepeatedCharacter = function( string ) {
   // TODO: your solution here
   var count = 0
-  var i = 0
   var arr = string.split( '' )
+
+  string.toUpperCase()
 
   for (var i = 0; i < string.length; i++ ) {
 
