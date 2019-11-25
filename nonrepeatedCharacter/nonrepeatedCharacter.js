@@ -32,7 +32,7 @@ var firstNonRepeatedCharacter = function( string ) {
   }
 };
 
-
+	// big O(n^2)
 
 
 
