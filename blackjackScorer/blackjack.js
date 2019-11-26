@@ -14,62 +14,55 @@ Examples
 ["5", "3", "7"]                 ==>  15
 ["5", "4", "3", "2", "A", "K"]  ==>  25 */
 
+var blackjack = function(arrOfStr) {
+    var score = {
+        'A': 1,
+        '2': 2,
+        '3': 3,
+        '4': 4,
+        '5': 5,
+        '6': 6,
+        '7': 7,
+        '8': 8,
+        '9': 9,
+        '10': 10,
+        'J': 10,
+        'Q': 10,
+        'K': 10
+    }
 
-var blackjack =function(arrOfStr) {
-	var score = {
-		'A': 1,
-		'2': 2,
-		'3': 3,
-		'4': 4,
-		'5': 5,
-		'6': 6,
-		'7': 7,
-		'8': 8,
-		'9': 9,
-		'10': 10,
-		'J': 10,
-		'Q': 10,
-		'K': 10
-	}
-	var sum = 0;
-	var arr = [];
+    var sum = 0;
+    var arr = [];
+    var count = 0;
 
-	for(var key in score) {
-		for(var i = 0; i < arrOfStr.length; i++) {
-			
-		if(key === arrOfStr[i] && key !== 'A') {
-			console.log(sum)
-			sum = sum + score[key];
-			}
-		}
-	}
+    for (var j = 0; j < arrOfStr.length; j++) {
+        if (arrOfStr[j] === 'A') {
+            count++
+        }
 
+    }
+    for (var key in score) {
+        for (var i = 0; i < arrOfStr.length; i++) {
 
-		if( sum <= 21) {
-			for(var key in score) {
-				for (var j = 0; j < arrOfStr.length; j++) {
-					if(key === 'A' && arrOfStr[j] === 'A') {
-						if(sum <= 21){
+            if (key === arrOfStr[i] && key !== 'A') {
 
-						sum += 11
-					}else{
-						sum += 1
-						}
-					}
-				}
-			}
-			return sum;
-		}else if(sum > 21) {
-			for(var key in score) {
-				for (var i = 0; i < score.length; i++) {
-					if(key === 'A' && arrOfStr === 'A') {
-						sum += 1
-					}
-				}
-			}
-			return sum;
-		}
-	}
+                sum = sum + score[key];
+                console.log(sum)
+            }
+        }
+    }
 
+    if (sum <= 21) {
 
-blackjack(["A", "J"] )
+        sum += count * 11
+        if (sum > 21) {
+            sum -= count * 10
+        }
+        return sum;
+    } else if (sum > 21) {
+        sum += count * 1
+        return sum
+    }
+}
+
+blackjack(["5", "4", "3", "2", "A", "K"])
