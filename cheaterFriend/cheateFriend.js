@@ -17,3 +17,43 @@
 //
 // Example:
 // removNb(26) should return [ {15, 21}, {21, 15} ]
+
+
+var removNb = (n)=>{
+    var array = [];
+    var range = []
+    var resultOfMult = 1;
+    var resultOfSum = 0;
+
+    if (n <= 0) {
+        return 'Invalid number'
+    }
+    for (var i = 1; i <= n; i++) {
+        range.push(i)
+    }
+
+    for (var j = 0; j < range.length; j++) {
+        for (var k = 1; k < range.length; k++) {
+            var x = range[j];
+            var y = range[k]
+
+            resultOfMult = x * y
+            for (var l = 0; l < range.length; l++) {
+                if (range[l] !== x) {
+                    if (range[l] !== y) {
+
+                        resultOfSum += range[l]
+                    }
+                }
+            }
+
+            if (resultOfSum === resultOfMult) {
+                array.push({x,y},{y,x})
+                return array
+            }
+            resultOfSum = 0;
+        }
+    }
+    return 'nill'
+}
+removNb(26)
