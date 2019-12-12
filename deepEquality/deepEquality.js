@@ -21,7 +21,7 @@ var deepEquals = function (apple, orange) {
       return false;
     }
     for (var key in apple) {
-      if (orange.hasOwnProperty(key)) {
+      if (orange[key]) {
          if(!deepEquals(apple[key], orange[key])){
            return false;
          }
