@@ -36,28 +36,28 @@
 var compose = function(...args) {
     // using the spread operation to get as many args as the user wishes and then applying them
     // to the value entred by the user
-    return function(value) {
+    return function(name) {
         for(var i = args.length - 1; i >= 0; i--) {
-            value = args[i](value)
+            name = args[i](name)
         }
-        return value
+        return name
     }
-    return value;
+    return name;
 };
 
-// var greet = function(name){ return 'hi: ' + name;}
-//     var exclaim = function(statement) { return statement.toUpperCase() + '!';}
-//     var welcome = compose(greet, exclaim);
-//     welcome('phillip');
+var greet = function(name){ return 'hi: ' + name;}
+    var exclaim = function(statement) { return statement.toUpperCase() + '!';}
+    var welcome = compose(greet, exclaim);
+    welcome('phillip');
 
 var pipe = function(...args) {
-    return function(value) {
+    return function(number) {
         for(var i = 0; i < args.length; i++) {
-            value = args[i](value)
+            number = args[i](number)
         }
-        return value
+        return number
     }
-    return value;
+    return number;
 };
 //  var add2 = function(number){ return number + 2; }
 //  var multiplyBy3 = function(number){ return number * 3; }
