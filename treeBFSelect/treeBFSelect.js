@@ -30,30 +30,32 @@
  * Basic tree that stores a value.
  */
 
-Tree.prototype.BFSelect = function(filter) {
-  // return an array of values for which the function filter(value, depth) returns true
-  var arr = [];
-  console.log(this.value)
-  if (filter(this.value, 0)) {  
-    arr.push(this.value);
-  }
-  
-  var one = function(val, depth) {
-    console.log(val.value)
-    if (val.children) {
-      depth++;
-      for (var i = 0; i < val.children.length; i++) {
-        if (filter(val.children[i].value, depth)) {
-          arr.push(val.children[i].value);
-        }
-        one(val.children[i], depth);
-      }
-    }
-  }
-  one(this, 0);
-  return arr;
+var Tree = function(value) {
+  this.value = value;
+  this.children = [];
 };
 
+
+
+Tree.prototype.BFSelect = function(filter) {
+  // return an array of values for which the function filter(value, depth) returns true
+  var arr = []
+    var rec = function(node, depth) {
+      if(filter(node.value, depth)){
+  
+        arr.push(node.value)
+      }
+        depth++
+        for(var i = 0; i < node.children.length; i++) {
+         rec(node.children[i], depth)
+      }
+    }
+    rec(this, 0)
+    arr.sort((a, b) => {
+      return a - b
+    });
+    return arr
+  }
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.
@@ -108,7 +110,8 @@ Tree.prototype.removeChild = function(child) {
     throw new Error('That node is not an immediate child of this tree');
   }
 };
-/////////////////////////////////////////
+
+
 var root1 = new Tree(1);
 var branch2 = root1.addChild(2);
 var branch3 = root1.addChild(3);
@@ -117,6 +120,6 @@ var leaf5 = branch2.addChild(5);
 var leaf6 = branch3.addChild(6);
 var leaf7 = branch3.addChild(7);
 root1.BFSelect(function (value, depth) {
-    return value % 2;
-  })
-  // [1, 3, 5, 7]
+  return value % 2;
+})
+// [1, 3, 5, 7]
