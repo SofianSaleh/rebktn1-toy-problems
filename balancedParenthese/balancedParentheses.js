@@ -11,6 +11,8 @@ isBalanced("") //	true
 var isBalanced = function(str) {
     var count1 = 0;
     var count2 = 0;
+
+    if(str[0] === ')') return false
     
     for (var i = 0; i < str.length; i++) {
         if(str[i] === '(') {
@@ -18,6 +20,9 @@ var isBalanced = function(str) {
         }
         if(str[i] === ')') {
             count2++
+        }
+        if(count1-count2 === 0 && str[i+1] === ')'){
+            return false
         }
     }
     return count1 === count2
