@@ -12,24 +12,24 @@ isBalanced("[{]}") // false
 var isBalanced = function(str) {
     var stack = []
     var size = 0;
-    var beginings = {
+    var starters = {
         '(': '(',
         '[': '[',
         '{': '{'
     }
 
-    var endings = {
+    var enders = {
         ')': ')',
         ']': ']',
         '}': '}'
     }
 
         for(var i = 0; i < str.length; i ++) {
-            if(beginings[str[i]]) {
+            if(starters[str[i]]) {
                 stack.push(str[i])
                 size++
-            }else if(endings[str[i]]) {
-                console.log()
+            }else if(enders[str[i]]) {
+                console.log(str[i])
                 if(stack.length === 0) {
                     return false;
                 }
@@ -45,7 +45,7 @@ var isBalanced = function(str) {
 
 
 
-                if(stack[size - 1] === beginings[char]){
+                if(stack[size - 1] === starters[char]){
                     stack.pop()
                     size --
                 }else{
