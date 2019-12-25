@@ -48,7 +48,7 @@ var rockPaperScissors = (n = 3) => {
             res.push(array)
         }else{
             for (let i = 0; i < choices.length; i++) {
-                
+                // used concat cos push gave an error
                 recursion(array.concat(choices[i]), num - 1)
             }
         }
