@@ -22,25 +22,42 @@ zeroSum([ 5, 7, 2, 9 ]) // false
 //     }
 // }
 
+// 
+// var zeroSum = (array) => {
+//     var j = 0
+//     var k =0
+    
+//     for (let i = 0; i <= array.length; i++) {
+//         if(i === array.length ) {
+//             j += 1
+//             i = 0
+//         }
+//         if(j === array.length - 1){
+//             return;
+//         }
+//         console.log(i, j)
+        
+//         if((array[j] + array[i]) === 0){
+//             return true
+//         }    
+//     }
+//     return false
+// }
+// console.log(zeroSum([ 1, 3, 2, -3 ]))
 
 var zeroSum = (array) => {
-    var j = 0
-    var k =0
+    var obj = {}
     
-    for (let i = 0; i <= array.length; i++) {
-        if(i === array.length ) {
-            j += 1
-            i = 0
+    for (let i = 0; i < array.length; i++) {
+        if(!obj[array[i]]){
+            obj[array[i]] = array[i]
         }
-        if(j === array.length - 1){
-            return;
-        }
-        console.log(i, j)
+        console.log(obj)
+            if(obj[(-1)* array[i]]){
+                return true
+            }
         
-        if((array[j] + array[i]) === 0){
-            return true
-        }    
     }
     return false
 }
-console.log(zeroSum([ 1, 3, 2, -3 ]))
+console.log(zeroSum([ 1, 3, 2, 3 ]))
